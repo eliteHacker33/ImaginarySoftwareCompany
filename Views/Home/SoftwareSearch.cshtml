@@ -1,0 +1,29 @@
+﻿@model ImaginarySoftwareCompany.Models.VersionManager
+@{
+    ViewData["Title"] = "Software Lookup";
+}
+<div class="page-header">
+    <h3>Software Product Lookup</h3>
+</div>
+
+<form asp-action="RetrieveNewerSoftwareVersions" asp-controller="SoftwareResults" method="post" class="formLayout">
+    <div class="form-group">
+        <label asp-for="Version">Version Number: </label>
+        <input asp-for="Version" class="form-control" placeholder="[major version].[minor version].[patch]" />
+    </div>
+
+    <button type="submit" class="btn btn-primary" value="Submit">Find Succeeding Software Versions</button>
+</form>
+
+<div asp-validation-summary="All"></div>
+
+<div id="SuccessiveSoftwareVersions">
+    @if (Model?.SoftwareVersions != null)
+    {
+        @await Html.PartialAsync("VersionResults", Model.SoftwareVersions);
+    }
+
+</div>
+
+
+

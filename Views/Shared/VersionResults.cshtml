@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ImaginarySoftwareCompany.Models.Software>
+
+@if (Model != null)
+{
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Software Name</th>
+                <th>Software Version</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model.Count() < 1)
+                {
+                    <tr>
+                        <td>There weren't any versions greater than version provided</td>
+                        <td>-----------------------------------------</td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (Software preceedingVersion in Model)
+                    {
+                        <tr>
+                            <td>@preceedingVersion.Name</td>
+                            <td>@preceedingVersion.Version</td>
+                        </tr>
+                    }
+                }
+            }
+
+
+        </tbody>
+    </table>
+}
